@@ -1,0 +1,27 @@
+﻿@model IEnumerable<CiCiLibrary.Models.Book>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Publisher</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var book in Model)
+        {
+            <tr>
+                <td>@book.Title</td>
+                <td>@book.Author.Name</td>
+                <td>@book.Publisher.Name</td>
+                <td>
+                    <button class="btn btn-primary editBook" data-id="@book.Id">Edit</button>
+                    <button class="btn btn-danger deleteBook" data-id="@book.Id">Delete</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

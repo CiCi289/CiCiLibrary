@@ -1,0 +1,30 @@
+﻿@model IEnumerable<CiCiLibrary.Models.Book>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index: List of Books</h2>
+<hr />
+
+<div>
+    <button id="createBook" class="btn btn-primary">Add Book</button>
+</div>
+
+<div id="bookList">
+    @Html.Partial("_BookList", Model)
+</div>
+
+<div id="modal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            // related modal will be loaded into here with html
+            <div id="modalContent" class="modal-body"></div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+
+}
+
