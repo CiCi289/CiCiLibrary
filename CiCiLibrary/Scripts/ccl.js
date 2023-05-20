@@ -28,7 +28,7 @@
                 if (response.success) {
                     console.log(response);
                     $('#modal').modal('hide');
-                    location.reload(); // Refresh page
+                    //location.reload(); // Refresh page
                 } else {
                     $('#modalContent').html(response);
                 }
@@ -43,7 +43,9 @@
         if (confirm('Are you sure you want to delete this book?')) {
             $.post('/Book/Delete/' + id, function (response) {
                 if (response.success) {
-                    location.reload(); // Refresh page
+                    alert('Deleted successfully!');
+                    updateBookList();
+                    //location.reload(); // Refresh page
                 }
             });
         }
@@ -65,5 +67,15 @@
     $('.modal').on('hidden.bs.modal', function () {
         console.log(`input was cleared!`);
         $(this).find("form")[0].reset();
+        updateBookList();
     });
+
+
+     //to update the bookList div
+    function updateBookList() {
+        $.get('/Book/Index', function (data) {
+            var bookListContent = $(data).find('#bookList').html();
+            $('#bookList').html(bookListContent);
+        });
+    }
 });
